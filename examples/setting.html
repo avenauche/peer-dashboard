@@ -1,0 +1,100 @@
+  <template>
+        
+     <div class="content bg-light"> 
+      <div class="container d-flex justify-content-center align-items-center flex-column" style="min-height: 100vh;">
+        <h4 class="page-title mb-4">Settings</h4>
+
+        <div class="card shadow p-4" style="width: 100%; max-width: 600px;">
+          <div class="card-body">
+            <div class="form">
+
+              <!-- CLICK Dropdown -->
+              <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label text-right">CLICK</label>
+                <div class="col-sm-8">
+                  <select class="form-control" id="notify_placement_from">
+                    <option value="top">once</option>
+                    <option value="bottom">many</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- IP Address -->
+              <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label text-right">IP ADDRESS:</label>
+                <div class="col-sm-8">
+                  <div class="d-flex align-items-center justify-content-between">
+                    <input type="text" class="form-control ip-block mx-1 text-center" maxlength="3" style="width: 60px;">
+                    <span>.</span>
+                    <input type="text" class="form-control ip-block mx-1 text-center" maxlength="3" style="width: 60px;">
+                    <span>.</span>
+                    <input type="text" class="form-control ip-block mx-1 text-center" maxlength="3" style="width: 60px;">
+                    <span>.</span>
+                    <input type="text" class="form-control ip-block mx-1 text-center" maxlength="3" style="width: 60px;">
+                  </div>
+                  <div class="invalid-feedback">Each octet must be between 0-255</div>
+                  <input type="hidden" id="fullIpAddress">
+                </div>
+              </div>
+
+              <!-- TTL Dropdown -->
+              <div class="form-group row align-items-center">
+                <label class="col-sm-4 col-form-label text-right">TTL (min):</label>
+                <div class="col-sm-8">
+                  <select class="form-control" id="notify_style">
+                    <option value="1 min">1 min</option>
+                    <option value="5 min">5 min</option>
+                    <option value="10 min">10 min</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Save Button -->
+              <div class="form-group row mt-4">
+                <div class="col-sm-12 text-center">
+                  <button id="displayNotif" class="btn btn-success px-5">Save</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+<script>
+document.getElementById('displayNotif').addEventListener('click', function (e) {
+  const blocks = document.querySelectorAll('.ip-block');
+  let isValid = true;
+  let ipParts = [];
+
+  blocks.forEach(block => {
+    const val = block.value.trim();
+    const num = Number(val);
+
+    if (val === '' || isNaN(num) || num < 0 || num > 255) {
+      block.classList.add('is-invalid');
+      isValid = false;
+    } else {
+      block.classList.remove('is-invalid');
+      block.classList.add('is-valid');
+      ipParts.push(val);
+    }
+  });
+
+  if (isValid) {
+    const fullIp = ipParts.join('.');
+    document.getElementById('fullIpAddress').value = fullIp;
+    alert('Valid IP: ' + fullIp);
+    // You can continue form submission here
+  } else {
+    alert('Invalid IP address. Please enter numbers between 0–255.');
+  }
+});
+</script>
+
+</template>
+
+
