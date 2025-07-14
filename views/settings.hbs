@@ -1,0 +1,53 @@
+       <div class="container">
+        <h4 class="mb-4 text-center">Settings</h4>
+        <form action="#" method="post">
+            <div class="card shadow p-4 mx-auto" style="max-width: 700px; max-height:80">
+                <!-- CLICK Dropdown as ComboBox -->
+                <div class="mb-3">
+                    <label for="mySelect" class="form-label">CLICK:</label>
+                    <select name="mySelect" id="mySelect" class="combobox form-select">
+                        <option value="once">once</option>
+                        <option value="many">many</option>
+                    </select>
+                </div>
+
+                <!-- IP Address Input -->
+                <div class="mb-3">
+                    <label for="ip1" class="form-label">Enter IP Address:</label>
+                    <div class="d-flex gap-2" style="max-width: 100%;">
+                        <input type="text" class="form-control text-center ip-segment" id="ip1" maxlength="3"
+                            style="width: 60px;">
+                        <span class="pt-2">.</span>
+                        <input type="text" class="form-control text-center ip-segment" id="ip2" maxlength="3"
+                            style="width: 60px;">
+                        <span class="pt-2">.</span>
+                        <input type="text" class="form-control text-center ip-segment" id="ip3" maxlength="3"
+                            style="width: 60px;">
+                        <span class="pt-2">.</span>
+                        <input type="text" class="form-control text-center ip-segment" id="ip4" maxlength="3"
+                            style="width: 60px;">
+                    </div>
+                    <div id="ipFeedback" class="form-text text-danger d-none">Invalid IP address.</div>
+                </div>
+
+                <!-- TTL as ComboBox -->
+                <div class="mb-3">
+                    <label for="ttlSelect" class="form-label">TTL (min):</label>
+                    <select name="ttlSelect" id="ttlSelect" class="combobox form-select">
+                        <option value="1 min">1 min</option>
+                        <option value="5 min">5 min</option>
+                        <option value="10 min">10 min</option>
+                    </select>
+                </div>
+
+                <!-- Save Button -->
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-success px-5">Save</button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <script src="../assets/js/blank.js"></script>
+
+
