@@ -12,6 +12,7 @@ var loginRouter=require('./routes/login')
 var analyticsRouter=require('./routes/analytics')
 var settingsRouter=require('./routes/settings')
 var dashboardRouter=require('./routes/dashboard')
+var logoutRouter=require('./routes/logout')
 
 var app = express();
 
@@ -40,6 +41,7 @@ app.use('/dashboard/analytics',analyticsRouter);
 app.use('/dashboard',dashboardRouter);
 app.use('/register',registerRouter)
 app.use('/login',loginRouter)
+app.use('/logout',logoutRouter)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
@@ -54,7 +56,11 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render('error', {
+    layout: false,
+    message: err.message,
+    error: err
+  });
 });
 
 module.exports = app;
